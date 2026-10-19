@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Metaverso 3D</title>
+<title>MyVR</title>
 <script type="importmap">
 { "imports": { "three": "https://unpkg.com/three@0.160.0/build/three.module.js", "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/" } }
 </script>
@@ -119,9 +119,9 @@ import { PointerLockControls } from 'three/addons/controls/PointerLockControls.j
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { RectAreaLightUniformsLib } from 'three/addons/lights/RectAreaLightUniformsLib.js';
 
-const CFG = {"title":"Metaverso 3D","env":{"color":"#393939","image":null,"light":true},"lights":[{"main":true,"type":"sun","name":"☀️ Sol","xform":{"pos":[12,18,10],"quat":[0,0,0,1],"scl":[1,1,1]},"intensity":1.5,"color":"#ffffff","castShadow":true},{"main":false,"type":"area","name":"💡 Luz de Área 1","xform":{"pos":[-10.92093,4,0],"quat":[-0.70711,0,0,0.70711],"scl":[1,1,1]},"intensity":6,"color":"#ffffff","width":3,"height":2}],"entities":[{"uid":"ent_1","name":"Cubo 1","kind":"cube","visible":true,"transparency":0,"xform":{"pos":[0,0.75,0],"quat":[0,0,0,1],"scl":[2.4064,1,6.17995]},"rules":{"touchAction":"none","touchUrl":"","touchMsg":"","clickAction":"none","clickUrl":"","clickMsg":"","touchValue":50,"clickValue":50,"targetIds":[]},"colliders":[{"name":"Colisión 1","enabled":true,"isTrigger":false,"verts":[[-0.75,-0.75,-0.75],[0.75,-0.75,-0.75],[0.75,0.75,-0.75],[-0.75,0.75,-0.75],[-0.75,-0.75,0.75],[0.75,-0.75,0.75],[0.75,0.75,0.75],[-0.75,0.75,0.75]],"indices":[0,2,1,0,3,2,4,5,6,4,6,7,4,7,3,4,3,0,1,2,6,1,6,5,3,7,6,3,6,2,4,0,1,4,1,5],"pivot":{"pos":[0,0,0],"quat":[0,0,0,1],"scl":[1,1,1]}}]},{"uid":"ent_2","name":"pared cas.glb","kind":"glb","visible":true,"transparency":0,"xform":{"pos":[-10.81998,0,0],"quat":[0,0,0,1],"scl":[0.60094,0.60094,0.60094]},"rules":{"touchAction":"none","touchUrl":"","touchMsg":"","clickAction":"none","clickUrl":"","clickMsg":"","touchValue":50,"clickValue":50,"targetIds":[]},"colliders":[{"name":"Colisión 1","enabled":true,"isTrigger":false,"verts":[[-1.16099,-0.5101,-1.25],[1.16099,-0.5101,-1.25],[1.16099,0.5101,-1.25],[-1.16099,0.5101,-1.25],[-1.16099,-0.5101,1.25],[1.16099,-0.5101,1.25],[1.16099,0.5101,1.25],[-1.16099,0.5101,1.25]],"indices":[0,2,1,0,3,2,4,5,6,4,6,7,4,7,3,4,3,0,1,2,6,1,6,5,3,7,6,3,6,2,4,0,1,4,1,5],"pivot":{"pos":[0,0,0],"quat":[0,0,0,1],"scl":[1,1,1]}}],"asset":"assets/models/pared_cas.glb"}],"globalRules":[],"avatar":{"glb":null,"glbXform":null,"defaultXform":{"pos":[0,0,0],"quat":[0,0,0,1],"scl":[1,1,1]},"face":{"pos":[0,1.38,0.18],"quat":[0,0,0,1],"scl":[1,1,1]},"facePhoto":null,"hairColor":"#3a2010","bodyColor":"#4772b3","cams":{"fps":{"x":0,"y":1.7,"z":0},"tps":{"x":0,"y":2.1,"z":2.5}},"phys":{"radius":0.4,"height":1.8,"noclip":false}},"player":{"speed":16,"jumpEnabled":true,"jumpForce":8.5,"maxSlopeAngle":45,"stepHeight":0.35,"gravity":22,"eyeHeight":1.7},"spawn":{"pos":[0,1.7,5],"rotY":0},"view":{"perspective":"avatar"},"controls":{"profileId":2,"turnSpeed":110},"embedded":{"assets/models/pared_cas.glb":"assets/_embed/models__pared_cas.glb.js"}};
+const CFG = {"title":"MyVR","env":{"color":"#393939","image":null,"light":true},"lights":[{"main":true,"type":"sun","name":"☀️ Sol","xform":{"pos":[12,18,10],"quat":[0,0,0,1],"scl":[1,1,1]},"intensity":1.5,"color":"#ffffff","castShadow":true}],"entities":[{"uid":"ent_1","name":"Cubo 1","kind":"cube","visible":true,"transparency":0,"xform":{"pos":[0,0.75,0],"quat":[0,0,0,1],"scl":[1,1,1]},"rules":{"touchAction":"none","touchUrl":"","touchMsg":"","clickAction":"none","clickUrl":"","clickMsg":"","touchValue":50,"clickValue":50,"targetIds":[]},"colliders":[{"name":"Colisión 1","enabled":true,"isTrigger":false,"verts":[[-0.75,-0.75,-0.75],[0.75,-0.75,-0.75],[0.75,0.75,-0.75],[-0.75,0.75,-0.75],[-0.75,-0.75,0.75],[0.75,-0.75,0.75],[0.75,0.75,0.75],[-0.75,0.75,0.75]],"indices":[0,2,1,0,3,2,4,5,6,4,6,7,4,7,3,4,3,0,1,2,6,1,6,5,3,7,6,3,6,2,4,0,1,4,1,5],"pivot":{"pos":[0,0,0],"quat":[0,0,0,1],"scl":[1,1,1]}}]}],"globalRules":[],"avatar":{"glb":null,"glbXform":null,"defaultXform":{"pos":[0,0,0],"quat":[0,0,0,1],"scl":[1,1,1]},"face":{"pos":[0,1.38,0.18],"quat":[0,0,0,1],"scl":[1,1,1]},"facePhoto":null,"hairColor":"#3a2010","bodyColor":"#4772b3","cams":{"fps":{"x":0,"y":1.7,"z":0},"tps":{"x":0,"y":2.1,"z":2.5}},"phys":{"radius":0.4,"height":1.8,"noclip":false}},"player":{"speed":16,"jumpEnabled":true,"jumpForce":8.5,"maxSlopeAngle":45,"stepHeight":0.35,"gravity":22,"eyeHeight":1.7},"spawn":{"pos":[0,1.7,5],"rotY":0},"view":{"perspective":"fps"},"controls":{"profileId":2,"turnSpeed":110},"embedded":{}};
 const $ = (id) => document.getElementById(id);
-document.title = CFG.title || 'Metaverso 3D';
+document.title = CFG.title || 'MyVR';
 
 /* ============ ESCENA Y RENDER ============ */
 const canvas = $('canvas3d');
@@ -170,6 +170,316 @@ async function assetURL(path) {
     return embeddedURLs[path];
 }
 const gltfLoader = new GLTFLoader();
+/* ===== CONTROLES TÁCTILES (celular): cruceta, giro, acciones, pantalla completa + horizontal ===== */
+var mvTouchEnabled = false;
+function mvInitTouchControls(api) {
+    const forced = /[?&]touch=1/.test(location.search);
+    const coarse = !!(window.matchMedia && window.matchMedia('(pointer: coarse)').matches);
+    if (!forced && !coarse) return { enabled: false };
+    mvTouchEnabled = true;
+    const canvas = api.canvas, camera = api.camera;
+
+    const css = document.createElement('style');
+    css.textContent = [
+        '#mvt{position:fixed;inset:0;z-index:9000;pointer-events:none;display:none;font-family:system-ui,sans-serif;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}',
+        '#mvt *{touch-action:none;-webkit-tap-highlight-color:transparent;box-sizing:border-box}',
+        '#mvt .b{position:absolute;pointer-events:auto;border-radius:50%;border:2px solid rgba(255,255,255,.38);background:rgba(20,24,32,.55);color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px;line-height:1;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}',
+        '#mvt .b.on{background:rgba(71,114,179,.9);border-color:#fff}',
+        '#mvt-dpad{left:calc(16px + env(safe-area-inset-left,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));width:150px;height:150px}',
+        '#mvt-dpad i{position:absolute;font-style:normal;font-size:16px;opacity:.85;pointer-events:none}',
+        '#mvt-knob{position:absolute;left:48px;top:48px;width:54px;height:54px;border-radius:50%;background:rgba(255,255,255,.28);border:2px solid rgba(255,255,255,.6);pointer-events:none}',
+        '#mvt-right{position:absolute;pointer-events:none;right:calc(14px + env(safe-area-inset-right,0px));bottom:calc(14px + env(safe-area-inset-bottom,0px));width:250px;height:190px}',
+        '#mvt-toggle{top:calc(10px + env(safe-area-inset-top,0px));right:calc(10px + env(safe-area-inset-right,0px));width:42px;height:42px;font-size:18px}',
+        '#mvt-rot{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);z-index:9001;display:none;pointer-events:none;background:rgba(15,17,21,.88);color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:12px;padding:16px 22px;font:600 15px system-ui,sans-serif;text-align:center}'
+    ].join('\n');
+    document.head.appendChild(css);
+
+    const root = document.createElement('div'); root.id = 'mvt';
+    const ui = document.createElement('div'); ui.id = 'mvt-ui'; ui.style.cssText = 'position:absolute;inset:0;pointer-events:none';
+    root.appendChild(ui);
+    const rot = document.createElement('div'); rot.id = 'mvt-rot'; rot.innerHTML = '📱↻<br>Gira tu celular a horizontal';
+    document.body.appendChild(root); document.body.appendChild(rot);
+
+    const mk = (parent, cls, txt, style) => {
+        const el = document.createElement('div');
+        el.className = cls; el.innerHTML = txt; el.style.cssText = style || '';
+        parent.appendChild(el); return el;
+    };
+
+    // Cruceta (arrastra o mantén; admite diagonales)
+    const dpad = mk(ui, 'b', '<i style="left:67px;top:6px">▲</i><i style="left:67px;bottom:6px">▼</i><i style="left:8px;top:66px">◀</i><i style="right:8px;top:66px">▶</i><div id="mvt-knob"></div>');
+    dpad.id = 'mvt-dpad';
+    const knob = dpad.querySelector('#mvt-knob');
+    let dpId = null;
+    const setMove = (f, b, l, r) => { api.moveState.fwd = f; api.moveState.bwd = b; api.moveState.lft = l; api.moveState.rgt = r; };
+    function dpUpdate(e) {
+        const r = dpad.getBoundingClientRect();
+        let x = (e.clientX - (r.left + r.width / 2)) / (r.width / 2), y = (e.clientY - (r.top + r.height / 2)) / (r.height / 2);
+        const m = Math.hypot(x, y);
+        if (m > 1) { x /= m; y /= m; }
+        knob.style.transform = 'translate(' + (x * 40) + 'px,' + (y * 40) + 'px)';
+        if (m < 0.22) { setMove(false, false, false, false); return; }
+        setMove(y < -0.3, y > 0.3, x < -0.3, x > 0.3);
+    }
+    function dpEnd(e) {
+        if (dpId === null || (e && e.pointerId !== dpId)) return;
+        dpId = null; dpad.classList.remove('on'); knob.style.transform = ''; setMove(false, false, false, false);
+    }
+    dpad.addEventListener('pointerdown', (e) => {
+        e.preventDefault(); e.stopPropagation();
+        if (dpId !== null) return;
+        dpId = e.pointerId; try { dpad.setPointerCapture(e.pointerId); } catch (_) {}
+        dpad.classList.add('on'); dpUpdate(e);
+    });
+    dpad.addEventListener('pointermove', (e) => { if (e.pointerId === dpId) dpUpdate(e); });
+    dpad.addEventListener('pointerup', dpEnd); dpad.addEventListener('pointercancel', dpEnd);
+    dpad.addEventListener('lostpointercapture', dpEnd);
+
+    // Botones del lado derecho
+    const right = mk(ui, '', ''); right.id = 'mvt-right';
+    const hold = (el, down, up) => {
+        let on = false;
+        const end = () => { if (!on) return; on = false; el.classList.remove('on'); up(); };
+        el.addEventListener('pointerdown', (e) => {
+            e.preventDefault(); e.stopPropagation();
+            if (on) return; on = true; el.classList.add('on');
+            try { el.setPointerCapture(e.pointerId); } catch (_) {}
+            down();
+        });
+        el.addEventListener('pointerup', end); el.addEventListener('pointercancel', end); el.addEventListener('lostpointercapture', end);
+    };
+    const tap = (el, fn) => {
+        el.addEventListener('pointerdown', (e) => { e.preventDefault(); e.stopPropagation(); el.classList.add('on'); fn(); });
+        const off = () => el.classList.remove('on');
+        el.addEventListener('pointerup', off); el.addEventListener('pointercancel', off); el.addEventListener('pointerleave', off);
+    };
+    const bUp = mk(right, 'b', '⬆️', 'left:60px;top:0;width:44px;height:44px;font-size:16px');
+    const bL = mk(right, 'b', '⟲', 'left:10px;top:46px;width:44px;height:44px');
+    const bR = mk(right, 'b', '⟳', 'left:110px;top:46px;width:44px;height:44px');
+    const bDn = mk(right, 'b', '⬇️', 'left:60px;top:92px;width:44px;height:44px;font-size:16px');
+    const bJump = mk(right, 'b', '⤒', 'left:176px;top:0;width:60px;height:60px;font-size:26px');
+    const bAct = mk(right, 'b', '👆', 'left:168px;top:70px;width:76px;height:76px;font-size:32px');
+    const bView = mk(right, 'b', '👁', 'left:8px;top:146px;width:40px;height:40px;font-size:17px');
+    const bFs = mk(right, 'b', '⛶', 'left:56px;top:146px;width:40px;height:40px;font-size:18px');
+    bUp.title = 'Mirar arriba'; bDn.title = 'Mirar abajo'; bL.title = 'Girar a la izquierda'; bR.title = 'Girar a la derecha';
+    bJump.title = 'Saltar'; bAct.title = 'Acción / interactuar'; bView.title = 'Cambiar vista 1ª / 3ª persona'; bFs.title = 'Pantalla completa';
+    hold(bUp, () => { api.turnState.up = true; }, () => { api.turnState.up = false; });
+    hold(bDn, () => { api.turnState.down = true; }, () => { api.turnState.down = false; });
+    hold(bL, () => { api.turnState.left = true; }, () => { api.turnState.left = false; });
+    hold(bR, () => { api.turnState.right = true; }, () => { api.turnState.right = false; });
+    tap(bJump, () => api.jump());
+    tap(bAct, () => api.actionAt(new THREE.Vector2(0, 0)));
+    tap(bView, () => api.toggleView());
+
+    // Mostrar / ocultar el panel
+    const toggle = mk(root, 'b', '🎮', ''); toggle.id = 'mvt-toggle';
+    tap(toggle, () => { ui.style.display = (ui.style.display === 'none') ? '' : 'none'; });
+
+    // Pantalla completa + horizontal
+    const fsOn = () => !!(document.fullscreenElement || document.webkitFullscreenElement);
+    function lockLandscape() { try { const o = screen.orientation; if (o && o.lock) o.lock('landscape').catch(() => {}); } catch (_) {} }
+    function immersive() {
+        if (fsOn()) { lockLandscape(); return; }
+        const el = document.documentElement, req = el.requestFullscreen || el.webkitRequestFullscreen;
+        if (!req) { lockLandscape(); return; }
+        try { const p = req.call(el); if (p && p.then) p.then(lockLandscape).catch(() => {}); else lockLandscape(); } catch (_) {}
+    }
+    tap(bFs, () => {
+        if (fsOn()) (document.exitFullscreen || document.webkitExitFullscreen).call(document); else immersive();
+    });
+    (api.immersiveTriggers || []).forEach(el => { if (el) el.addEventListener('click', immersive); });
+
+    // Mirar arrastrando sobre la escena; un toque corto interactúa con lo tocado
+    const active = () => api.isPlaying();
+    let lookId = null, lx = 0, ly = 0, sx = 0, sy = 0, st = 0;
+    const eul = new THREE.Euler(0, 0, 0, 'YXZ');
+    canvas.style.touchAction = 'none';
+    window.addEventListener('pointerdown', (e) => {
+        if (e.pointerType === 'mouse' && !forced) return;
+        if (!active() || e.target !== canvas) return;
+        e.stopImmediatePropagation();
+        if (lookId !== null) return;
+        lookId = e.pointerId; lx = sx = e.clientX; ly = sy = e.clientY; st = performance.now();
+    }, true);
+    window.addEventListener('pointermove', (e) => {
+        if (e.pointerId !== lookId) return;
+        const dx = e.clientX - lx, dy = e.clientY - ly; lx = e.clientX; ly = e.clientY;
+        eul.setFromQuaternion(camera.quaternion);
+        eul.y -= dx * 0.0045;
+        eul.x = Math.max(-1.5, Math.min(1.5, eul.x - dy * 0.0045));
+        eul.z = 0;
+        camera.quaternion.setFromEuler(eul);
+    }, true);
+    const lookEnd = (e) => {
+        if (e.pointerId !== lookId) return;
+        lookId = null;
+        if (e.type === 'pointerup' && Math.hypot(e.clientX - sx, e.clientY - sy) < 12 && performance.now() - st < 400) {
+            api.actionAt(new THREE.Vector2((e.clientX / window.innerWidth) * 2 - 1, -(e.clientY / window.innerHeight) * 2 + 1));
+        }
+    };
+    window.addEventListener('pointerup', lookEnd, true);
+    window.addEventListener('pointercancel', lookEnd, true);
+
+    // El mouse nunca se captura en el celular
+    if (api.fpsControls) {
+        const origLock = api.fpsControls.lock.bind(api.fpsControls);
+        api.fpsControls.lock = function () { if (mvTouchEnabled) return; return origLock(); };
+    }
+
+    // Visibilidad según el modo + aviso de orientación
+    let shown = false, chOn = false;
+    setInterval(() => {
+        const on = active();
+        if (on !== shown) {
+            shown = on;
+            root.style.display = on ? 'block' : 'none';
+            if (!on) { setMove(false, false, false, false); Object.keys(api.turnState).forEach(k => { api.turnState[k] = false; }); dpEnd(); }
+        }
+        if (api.crosshair) {
+            if (on && !chOn) { api.crosshair.style.display = 'block'; chOn = true; }
+            else if (!on && chOn) { api.crosshair.style.display = 'none'; chOn = false; }
+        }
+        rot.style.display = (on && window.innerHeight > window.innerWidth) ? 'block' : 'none';
+    }, 250);
+
+    return { enabled: true, immersive };
+}
+
+/* ===== GIF ANIMADO: decodificador propio + textura de canvas (sin dependencias) ===== */
+const gifAnimators = [];
+function mvGifLzw(minCode, data, count) {
+    const clear = 1 << minCode, eoi = clear + 1;
+    let size = minCode + 1, next = eoi + 1, mask = (1 << size) - 1;
+    const prefix = new Uint16Array(4096), suffix = new Uint8Array(4096), stack = new Uint8Array(4097);
+    const out = new Uint8Array(count);
+    for (let i = 0; i < clear; i++) suffix[i] = i;
+    let bits = 0, nbits = 0, pos = 0, op = 0, prev = -1, first = 0;
+    while (op < count) {
+        while (nbits < size) {
+            if (pos >= data.length) return out;
+            bits |= data[pos++] << nbits; nbits += 8;
+        }
+        const code = bits & mask; bits >>= size; nbits -= size;
+        if (code === clear) { size = minCode + 1; mask = (1 << size) - 1; next = eoi + 1; prev = -1; continue; }
+        if (code === eoi) break;
+        if (prev === -1) { out[op++] = suffix[code]; prev = code; first = code; continue; }
+        let cur = code, sp = 0;
+        if (code >= next) { stack[sp++] = first; cur = prev; }
+        while (cur >= clear) { stack[sp++] = suffix[cur]; cur = prefix[cur]; }
+        first = suffix[cur]; stack[sp++] = first;
+        if (next < 4096) {
+            prefix[next] = prev; suffix[next] = first; next++;
+            if (next === (1 << size) && size < 12) { size++; mask = (1 << size) - 1; }
+        }
+        while (sp > 0 && op < count) out[op++] = stack[--sp];
+        prev = code;
+    }
+    return out;
+}
+function mvParseGif(buffer) {
+    const d = new Uint8Array(buffer);
+    const sig = String.fromCharCode(d[0], d[1], d[2], d[3], d[4], d[5]);
+    if (sig !== 'GIF87a' && sig !== 'GIF89a') throw new Error('No es un GIF válido');
+    const W = d[6] | (d[7] << 8), H = d[8] | (d[9] << 8), flags = d[10];
+    let p = 13, gct = null;
+    if (flags & 0x80) { const n = 3 * (2 << (flags & 7)); gct = d.subarray(p, p + n); p += n; }
+    const frames = []; let gce = null;
+    while (p < d.length) {
+        const b = d[p++];
+        if (b === 0x3B) break;
+        if (b === 0x21) {
+            const label = d[p++];
+            if (label === 0xF9) gce = { disposal: (d[p + 1] >> 2) & 7, trans: d[p + 1] & 1, delay: d[p + 2] | (d[p + 3] << 8), tIndex: d[p + 4] };
+            while (p < d.length && d[p] !== 0) p += d[p] + 1;
+            p++;
+        } else if (b === 0x2C) {
+            const x = d[p] | (d[p + 1] << 8), y = d[p + 2] | (d[p + 3] << 8), w = d[p + 4] | (d[p + 5] << 8), h = d[p + 6] | (d[p + 7] << 8), f = d[p + 8];
+            p += 9;
+            let ct = gct;
+            if (f & 0x80) { const n = 3 * (2 << (f & 7)); ct = d.subarray(p, p + n); p += n; }
+            const minCode = d[p++];
+            const chunks = []; let total = 0;
+            while (p < d.length && d[p] !== 0) { const sz = d[p++]; chunks.push(d.subarray(p, p + sz)); p += sz; total += sz; }
+            p++;
+            const data = new Uint8Array(total); let o = 0;
+            for (const c of chunks) { data.set(c, o); o += c.length; }
+            const idx = mvGifLzw(minCode, data, w * h);
+            const img = new ImageData(w, h), px = img.data;
+            const rowOf = (r) => r;
+            let order = null;
+            if (f & 0x40) {
+                order = []; const st = [0, 4, 2, 1], sp = [8, 8, 4, 2];
+                for (let ps = 0; ps < 4; ps++) for (let r = st[ps]; r < h; r += sp[ps]) order.push(r);
+            }
+            for (let r = 0; r < h; r++) {
+                const dstRow = order ? order[r] : rowOf(r);
+                for (let c = 0; c < w; c++) {
+                    const ci = idx[r * w + c], q = (dstRow * w + c) * 4;
+                    if (gce && gce.trans && ci === gce.tIndex) { px[q + 3] = 0; continue; }
+                    if (ct) { px[q] = ct[ci * 3]; px[q + 1] = ct[ci * 3 + 1]; px[q + 2] = ct[ci * 3 + 2]; }
+                    px[q + 3] = 255;
+                }
+            }
+            const dl = gce ? gce.delay : 10;
+            frames.push({ x, y, w, h, image: img, disposal: gce ? gce.disposal : 0, delay: dl < 2 ? 100 : dl * 10 });
+            gce = null;
+        } else break;
+    }
+    if (!W || !H || !frames.length) throw new Error('GIF sin fotogramas');
+    return { width: W, height: H, frames };
+}
+function mvCreateGifAnimator(buffer) {
+    const gif = mvParseGif(buffer);
+    const W = gif.width, H = gif.height, frames = gif.frames;
+    const canvas = document.createElement('canvas'); canvas.width = W; canvas.height = H;
+    const ctx = canvas.getContext('2d');
+    const tmp = document.createElement('canvas'), tctx = tmp.getContext('2d');
+    let saved = null, cur = 0;
+    function draw(i) {
+        if (i === 0) { ctx.clearRect(0, 0, W, H); saved = null; }
+        else {
+            const pf = frames[i - 1];
+            if (pf.disposal === 2) ctx.clearRect(pf.x, pf.y, pf.w, pf.h);
+            else if (pf.disposal === 3 && saved) ctx.putImageData(saved, 0, 0);
+        }
+        const f = frames[i];
+        if (f.disposal === 3) saved = ctx.getImageData(0, 0, W, H);
+        tmp.width = f.w; tmp.height = f.h;
+        tctx.putImageData(f.image, 0, 0);
+        ctx.drawImage(tmp, f.x, f.y);
+        cur = i;
+    }
+    draw(0);
+    const tex = new THREE.CanvasTexture(canvas);
+    tex.colorSpace = THREE.SRGBColorSpace;
+    tex.generateMipmaps = false;
+    tex.minFilter = THREE.LinearFilter; tex.magFilter = THREE.LinearFilter;
+    const anim = {
+        texture: tex, width: W, height: H, frameCount: frames.length, acc: 0, last: performance.now(),
+        step(now) {
+            let dt = now - this.last; this.last = now;
+            if (frames.length < 2) return;
+            if (dt > 250) dt = 250;
+            this.acc += dt;
+            let changed = false, guard = 0;
+            while (this.acc >= frames[cur].delay && guard++ < frames.length) {
+                this.acc -= frames[cur].delay;
+                draw((cur + 1) % frames.length);
+                changed = true;
+            }
+            if (guard >= frames.length) this.acc = 0;
+            if (changed) tex.needsUpdate = true;
+        }
+    };
+    gifAnimators.push(anim);
+    return anim;
+}
+function updateGifAnimations() {
+    if (!gifAnimators.length || document.hidden) return;
+    const now = performance.now();
+    for (let i = 0; i < gifAnimators.length; i++) gifAnimators[i].step(now);
+}
+
 const textureLoader = new THREE.TextureLoader();
 async function loadGLBAsset(path) {
     const url = await assetURL(path);
@@ -370,12 +680,21 @@ async function createBaseObject(d) {
             return model;
         }
         case 'image': {
-            const tex = await loadTextureAsset(d.asset);
+            let gifAnim = null, tex = null;
+            if (/\.gif$/i.test(d.asset || '')) {
+                try {
+                    const gUrl = await assetURL(d.asset);
+                    const gBuf = await (await fetch(gUrl)).arrayBuffer();
+                    gifAnim = mvCreateGifAnimator(gBuf);
+                    tex = gifAnim.texture;
+                } catch (err) { gifAnim = null; tex = null; } // sin acceso al archivo: se muestra estático
+            }
+            if (!tex) tex = await loadTextureAsset(d.asset);
             tex.colorSpace = THREE.SRGBColorSpace;
             const aspect = d.aspect || (tex.image.width / tex.image.height) || 1;
             const h = 2.0, w = h * aspect;
             const g = new THREE.Group();
-            const plane = new THREE.Mesh(new THREE.PlaneGeometry(w, h), new THREE.MeshStandardMaterial({ map: tex, roughness: 0.2, metalness: 0.05, side: THREE.DoubleSide }));
+            const plane = new THREE.Mesh(new THREE.PlaneGeometry(w, h), new THREE.MeshStandardMaterial({ map: tex, roughness: 0.2, metalness: 0.05, side: THREE.DoubleSide, alphaTest: gifAnim ? 0.5 : 0 }));
             plane.castShadow = true; g.add(plane);
             const frame = new THREE.Mesh(new THREE.BoxGeometry(w + 0.08, h + 0.08, 0.05), new THREE.MeshStandardMaterial({ color: 0x1a1a1a, roughness: 0.7 }));
             frame.position.z = -0.026; frame.receiveShadow = true; g.add(frame);
@@ -626,7 +945,7 @@ function clearInputStates() {
     moveState.fwd = false; moveState.bwd = false; moveState.lft = false; moveState.rgt = false;
     turnState.left = false; turnState.right = false; turnState.up = false; turnState.down = false;
 }
-function viewActive() { return activeProfile().mouseLook ? fpsControls.isLocked : true; }
+function viewActive() { return mvTouchEnabled || (activeProfile().mouseLook ? fpsControls.isLocked : true); }
 
 function renderControlsMenu() {
     const p = activeProfile();
@@ -1183,7 +1502,7 @@ function updatePlayerPhysics(delta, moveDelta) {
 }
 
 /* ============ BIENVENIDA ============ */
-$('w-title').innerText = CFG.title || 'Metaverso 3D';
+$('w-title').innerText = CFG.title || 'MyVR';
 let defaultNick = 'Visitante_' + Math.floor(Math.random() * 899 + 100);
 let savedHair = null;
 try {
@@ -1233,6 +1552,17 @@ function startExperience() {
     showToast('🎮 Abre «Controles» (arriba a la derecha) para ver o cambiar las teclas', 4500);
 }
 $('btn-enter').addEventListener('click', startExperience);
+
+/* ============ CONTROLES TÁCTILES ============ */
+const mvTouch = mvInitTouchControls({
+    camera, canvas, fpsControls, moveState, turnState,
+    crosshair: $('crosshair'),
+    isPlaying: () => state === 'play',
+    jump: () => { if (isGrounded && playerConfig.jumpEnabled) { verticalVelocity = playerConfig.jumpForce; isGrounded = false; } },
+    toggleView: () => { setPerspective(viewPerspective === 'fps' ? 'avatar' : 'fps'); showToast(viewPerspective === 'fps' ? 'Vista: 1ª Persona' : 'Vista: 3ª Persona (Avatar)'); },
+    actionAt: (ndc) => { const r = pickEntityAt(ndc); if (r) onAvatarClick(r); },
+    immersiveTriggers: [$('btn-enter')]
+});
 
 /* ============ ARRANQUE ============ */
 async function boot() {
@@ -1448,6 +1778,7 @@ function vrLocomotion(delta) {
 function vrFrame() {
     const delta = Math.min(vrClock.getDelta(), 0.05);
     if (avatarMixer) avatarMixer.update(delta);
+    updateGifAnimations();
     if (vrHooks.isPlaying()) vrLocomotion(delta);
     vrDolly.position.set(playerLogicalPos.x, playerLogicalPos.y - playerConfig.eyeHeight, playerLogicalPos.z);
     avatarGroup.visible = false;   // en 1ª persona inmersiva no se dibuja el cuerpo
@@ -1570,6 +1901,7 @@ function animate() {
     animRaf = requestAnimationFrame(animate);
     const delta = Math.min(clock.getDelta(), 0.05);
     if (avatarMixer) avatarMixer.update(delta);
+    updateGifAnimations();
 
     if (state === 'welcome') {
         // Vista previa del avatar frente a la cámara, orbitando suavemente
