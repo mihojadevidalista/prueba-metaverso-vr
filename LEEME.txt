@@ -1,4 +1,4 @@
-VISOR METAGALLERY 3D
+VISOR MyVR
 ====================
 
 Abre "index.html" en tu navegador (Chrome, Edge o Firefox) para entrar a la experiencia.
@@ -14,4 +14,3 @@ Carpetas:
   assets/_embed       copias para abrir index.html con doble clic (file://)
 
 Para publicarlo en internet, sube TODA la carpeta (index.html + assets) a tu hosting.
-AVISO: 1 archivo(s) pesan más de 25 MB y no tienen copia incrustada. Si abres index.html con doble clic podrían no verse; sírvelo desde un servidor (hosting o "python -m http.server").
