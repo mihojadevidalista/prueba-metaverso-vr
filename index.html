@@ -56,6 +56,16 @@ input[type=text]:focus { border-color:var(--accent); }
 #btn-vr.unsupported { opacity:.65; }
 #btn-vr.in-vr { background:var(--accent); border-color:var(--accent); color:#fff; }
 #btn-mp { display:none; }
+#touch-ui { display:none; position:fixed; inset:0; z-index:150; pointer-events:none; }
+#touch-look { position:absolute; inset:0; pointer-events:auto; touch-action:none; }
+#tj-base { position:absolute; left:max(22px, env(safe-area-inset-left)); bottom:max(26px, env(safe-area-inset-bottom)); width:130px; height:130px; border-radius:50%; background:rgba(255,255,255,.12); border:2px solid rgba(255,255,255,.35); pointer-events:auto; touch-action:none; backdrop-filter:blur(4px); }
+#tj-knob { position:absolute; left:50%; top:50%; width:58px; height:58px; margin:-29px 0 0 -29px; border-radius:50%; background:rgba(0,210,255,.55); border:2px solid rgba(255,255,255,.7); pointer-events:none; }
+.tb { position:absolute; width:64px; height:64px; border-radius:50%; font-size:26px; background:rgba(28,32,40,.7); border:2px solid rgba(255,255,255,.4); color:#fff; pointer-events:auto; touch-action:none; display:flex; align-items:center; justify-content:center; padding:0; backdrop-filter:blur(4px); }
+.tb:active { background:var(--accent); }
+#tb-jump { right:max(26px, env(safe-area-inset-right)); bottom:max(34px, env(safe-area-inset-bottom)); }
+#tb-view { right:max(26px, env(safe-area-inset-right)); bottom:calc(max(34px, env(safe-area-inset-bottom)) + 76px); }
+@media (pointer:coarse) { html, body { touch-action:none; overscroll-behavior:none; } #hud button { padding:7px 9px; font-size:11px; } }
+
 #mp-panel { position:fixed; top:56px; right:12px; width:290px; max-height:calc(100vh - 80px); overflow-y:auto; z-index:305; background:var(--panel); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border:1px solid var(--border); border-radius:12px; padding:12px; display:none; flex-direction:column; gap:8px; font-size:12px; box-shadow:0 12px 40px rgba(0,0,0,.55); }
 #mp-panel.open { display:flex; }
 #mp-panel h3 { font-size:12px; text-transform:uppercase; letter-spacing:.6px; color:var(--muted); }
@@ -95,6 +105,13 @@ input[type=text]:focus { border-color:var(--accent); }
         <button id="ctl-reset" style="flex:1;">↺ Restablecer</button>
     </div>
     <div id="ctl-dirty" style="display:none; font-size:11px; color:#f1c40f;">Tienes cambios sin guardar.</div>
+</div>
+
+<div id="touch-ui">
+    <div id="touch-look"></div>
+    <div id="tj-base"><div id="tj-knob"></div></div>
+    <button class="tb" id="tb-view" title="Cambiar 1ª / 3ª persona">👁</button>
+    <button class="tb" id="tb-jump" title="Saltar">⤒</button>
 </div>
 
 <div id="mp-panel">
@@ -146,7 +163,7 @@ import { PointerLockControls } from 'three/addons/controls/PointerLockControls.j
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { RectAreaLightUniformsLib } from 'three/addons/lights/RectAreaLightUniformsLib.js';
 
-const CFG = {"title":"MyVR","env":{"color":"#393939","image":null,"light":true},"lights":[{"main":true,"type":"sun","name":"☀️ Sol","xform":{"pos":[12,18,10],"quat":[0,0,0,1],"scl":[1,1,1]},"intensity":1.5,"color":"#ffffff","castShadow":true}],"timeline":{"duration":10,"loop":true,"autoplay":true,"time":0,"items":[{"uid":"ent_1","li":-1,"colFollow":true,"duration":7,"loop":true,"time":3.7118,"tracks":{"scl.u":[{"t":0,"v":1,"e":"smooth"},{"t":2.689,"v":4.7,"e":"smooth"},{"t":3.778,"v":4.7,"e":"smooth"},{"t":7,"v":1,"e":"smooth"}]}},{"uid":"ent_2","li":-1,"colFollow":true,"duration":10,"loop":true,"time":4.7118,"tracks":{"transp":[{"t":0,"v":0,"e":"smooth"},{"t":3.211,"v":100,"e":"smooth"}]}}]},"entities":[{"uid":"ent_1","name":"Cubo 1","kind":"cube","visible":true,"transparency":0,"xform":{"pos":[0,0.75,0],"quat":[0,0,0,1],"scl":[4.7,4.7,4.7]},"rules":{"touchAction":"none","touchUrl":"","touchMsg":"","clickAction":"none","clickUrl":"","clickMsg":"","touchValue":50,"clickValue":50,"targetIds":[]},"colliders":[{"name":"Colisión 1","enabled":true,"isTrigger":false,"verts":[[-0.75,-0.75,-0.75],[0.75,-0.75,-0.75],[0.75,0.75,-0.75],[-0.75,0.75,-0.75],[-0.75,-0.75,0.75],[0.75,-0.75,0.75],[0.75,0.75,0.75],[-0.75,0.75,0.75]],"indices":[0,2,1,0,3,2,4,5,6,4,6,7,4,7,3,4,3,0,1,2,6,1,6,5,3,7,6,3,6,2,4,0,1,4,1,5],"pivot":{"pos":[0,0,0],"quat":[0,0,0,1],"scl":[1,1,1]}}]},{"uid":"ent_2","name":"Cubo 2","kind":"cube","visible":true,"transparency":100,"xform":{"pos":[6.03192,0.75,0],"quat":[0,0,0,1],"scl":[1,1,1]},"rules":{"touchAction":"none","touchUrl":"","touchMsg":"","clickAction":"none","clickUrl":"","clickMsg":"","touchValue":50,"clickValue":50,"targetIds":[]},"colliders":[{"name":"Colisión 1","enabled":true,"isTrigger":false,"verts":[[-0.75,-0.75,-0.75],[0.75,-0.75,-0.75],[0.75,0.75,-0.75],[-0.75,0.75,-0.75],[-0.75,-0.75,0.75],[0.75,-0.75,0.75],[0.75,0.75,0.75],[-0.75,0.75,0.75]],"indices":[0,2,1,0,3,2,4,5,6,4,6,7,4,7,3,4,3,0,1,2,6,1,6,5,3,7,6,3,6,2,4,0,1,4,1,5],"pivot":{"pos":[0,0,0],"quat":[0,0,0,1],"scl":[1,1,1]}}]}],"globalRules":[],"avatar":{"glb":null,"glbXform":null,"defaultXform":{"pos":[0,0,0],"quat":[0,0,0,1],"scl":[1,1,1]},"face":{"pos":[0,1.38,0.18],"quat":[0,0,0,1],"scl":[1,1,1]},"facePhoto":null,"hairColor":"#3a2010","bodyColor":"#4772b3","cams":{"fps":{"x":0,"y":1.7,"z":0},"tps":{"x":0,"y":2.1,"z":2.5}},"phys":{"radius":0.4,"height":1.8,"noclip":false}},"player":{"speed":16,"jumpEnabled":true,"jumpForce":8.5,"maxSlopeAngle":45,"stepHeight":0.35,"gravity":22,"eyeHeight":1.7},"floor":{"enabled":true,"scale":1,"killY":-20},"spawn":{"pos":[0,1.7,5],"rotY":0},"view":{"perspective":"fps"},"mp":{"enabled":true,"room":"myvr-tx52wn","maxUsers":8},"controls":{"profileId":2,"turnSpeed":110},"embedded":{}};
+const CFG = {"title":"MyVR","env":{"color":"#393939","image":null,"light":true},"lights":[{"main":true,"type":"sun","name":"☀️ Sol","xform":{"pos":[12,18,10],"quat":[0,0,0,1],"scl":[1,1,1]},"intensity":1.5,"color":"#ffffff","castShadow":true}],"timeline":{"duration":10,"loop":true,"autoplay":true,"time":0,"items":[]},"entities":[{"uid":"ent_1","name":"Cubo 1","kind":"cube","visible":true,"transparency":0,"xform":{"pos":[0,0.75,0],"quat":[0,0,0,1],"scl":[1,1,1]},"rules":{"touchAction":"none","touchUrl":"","touchMsg":"","clickAction":"none","clickUrl":"","clickMsg":"","touchValue":50,"clickValue":50,"targetIds":[]},"colliders":[{"name":"Colisión 1","enabled":true,"isTrigger":false,"verts":[[-0.75,-0.75,-0.75],[0.75,-0.75,-0.75],[0.75,0.75,-0.75],[-0.75,0.75,-0.75],[-0.75,-0.75,0.75],[0.75,-0.75,0.75],[0.75,0.75,0.75],[-0.75,0.75,0.75]],"indices":[0,2,1,0,3,2,4,5,6,4,6,7,4,7,3,4,3,0,1,2,6,1,6,5,3,7,6,3,6,2,4,0,1,4,1,5],"pivot":{"pos":[0,0,0],"quat":[0,0,0,1],"scl":[1,1,1]}}]},{"uid":"ent_2","name":"Cubo 2","kind":"cube","visible":true,"transparency":0,"xform":{"pos":[4.05086,0.75,0],"quat":[0,0,0,1],"scl":[1,1,1]},"rules":{"touchAction":"none","touchUrl":"","touchMsg":"","clickAction":"none","clickUrl":"","clickMsg":"","touchValue":50,"clickValue":50,"targetIds":[]},"colliders":[{"name":"Colisión 1","enabled":true,"isTrigger":false,"verts":[[-0.75,-0.75,-0.75],[0.75,-0.75,-0.75],[0.75,0.75,-0.75],[-0.75,0.75,-0.75],[-0.75,-0.75,0.75],[0.75,-0.75,0.75],[0.75,0.75,0.75],[-0.75,0.75,0.75]],"indices":[0,2,1,0,3,2,4,5,6,4,6,7,4,7,3,4,3,0,1,2,6,1,6,5,3,7,6,3,6,2,4,0,1,4,1,5],"pivot":{"pos":[0,0,0],"quat":[0,0,0,1],"scl":[1,1,1]}}]}],"globalRules":[],"avatar":{"glb":null,"glbXform":null,"defaultXform":{"pos":[0,0,0],"quat":[0,0,0,1],"scl":[1,1,1]},"face":{"pos":[0,1.38,0.18],"quat":[0,0,0,1],"scl":[1,1,1]},"facePhoto":null,"hairColor":"#3a2010","bodyColor":"#4772b3","cams":{"fps":{"x":0,"y":1.7,"z":0},"tps":{"x":0,"y":2.1,"z":2.5}},"phys":{"radius":0.4,"height":1.8,"noclip":false}},"player":{"speed":16,"jumpEnabled":true,"jumpForce":8.5,"maxSlopeAngle":45,"stepHeight":0.35,"gravity":22,"eyeHeight":1.7},"floor":{"enabled":true,"scale":1,"killY":-20},"spawn":{"pos":[0,1.7,5],"rotY":0},"view":{"perspective":"fps"},"mp":{"enabled":true,"room":"myvr-tx52wn","maxUsers":8},"controls":{"profileId":2,"turnSpeed":110},"embedded":{}};
 const $ = (id) => document.getElementById(id);
 document.title = CFG.title || 'MyVR';
 
@@ -770,10 +787,10 @@ const codeToAction = new Map();
 const LS_PREFS = 'metaverso_visor_prefs_v1';
 const LS_CUSTOM = 'metaverso_visor_custom_v1';
 
+const TOUCH = { on: !!(window.matchMedia && window.matchMedia('(pointer:coarse)').matches) && !/OculusBrowser|Quest|Pico|Wolvic|VIVE/i.test(navigator.userAgent || '') };
 function activeProfile() {
-    if (controlSettings.profileId === 2) return PROFILE_2;
-    if (controlSettings.profileId === 3) return customProfile;
-    return PROFILE_1;
+    const p = controlSettings.profileId === 2 ? PROFILE_2 : (controlSettings.profileId === 3 ? customProfile : PROFILE_1);
+    return (TOUCH.on && p.mouseLook) ? Object.assign({}, p, { mouseLook: false }) : p;   // en celular no hay mouse que capturar
 }
 function buildCodeMap() {
     codeToAction.clear();
@@ -995,6 +1012,83 @@ window.addEventListener('click', (e) => {
         fpsControls.lock();
     }
 });
+
+/* ============ CONTROLES TÁCTILES (celular / tablet) ============ */
+function touchShow(on) { $('touch-ui').style.display = (on && TOUCH.on) ? 'block' : 'none'; }
+function touchEnter() {
+    if (!TOUCH.on) return;
+    touchShow(true);
+    // Pantalla completa + horizontal (el navegador lo permite solo tras un toque del usuario: el botón Entrar)
+    try {
+        const el = document.documentElement, req = el.requestFullscreen || el.webkitRequestFullscreen;
+        if (req && !(document.fullscreenElement || document.webkitFullscreenElement)) {
+            const p = req.call(el);
+            const lock = () => { try { if (screen.orientation && screen.orientation.lock) screen.orientation.lock('landscape').catch(() => {}); } catch (e) { /* sin bloqueo */ } };
+            if (p && p.then) p.then(lock).catch(() => {}); else lock();
+        }
+    } catch (e) { /* sin pantalla completa */ }
+    if (window.innerHeight > window.innerWidth) showToast('📱 Gira el teléfono en horizontal para una mejor vista', 5000);
+}
+(function touchInit() {
+    if (!TOUCH.on) return;
+    const base = $('tj-base'), knob = $('tj-knob'), look = $('touch-look'), R = 45, DEAD = 16;
+    let sid = null, cx = 0, cy = 0;
+    const setMove = (dx, dy) => {
+        const m = Math.hypot(dx, dy) || 1, k = m > R ? R / m : 1, nx = dx * k, ny = dy * k;
+        knob.style.transform = 'translate(' + nx + 'px,' + ny + 'px)';
+        moveState.lft = nx < -DEAD; moveState.rgt = nx > DEAD; moveState.fwd = ny < -DEAD; moveState.bwd = ny > DEAD;
+    };
+    const stopMove = () => { sid = null; knob.style.transform = ''; moveState.fwd = moveState.bwd = moveState.lft = moveState.rgt = false; };
+    base.addEventListener('pointerdown', (e) => {
+        sid = e.pointerId; try { base.setPointerCapture(e.pointerId); } catch (err) { /* sin captura */ }
+        const r = base.getBoundingClientRect(); cx = r.left + r.width / 2; cy = r.top + r.height / 2;
+        setMove(e.clientX - cx, e.clientY - cy); e.preventDefault();
+    });
+    base.addEventListener('pointermove', (e) => { if (e.pointerId === sid) setMove(e.clientX - cx, e.clientY - cy); });
+    ['pointerup', 'pointercancel'].forEach(t => base.addEventListener(t, (e) => { if (e.pointerId === sid) stopMove(); }));
+
+    // Arrastrar en la pantalla = mirar; un toque corto = interactuar con el objeto tocado
+    let lid = null, lx = 0, ly = 0, sx = 0, sy = 0, st = 0, moved = 0;
+    look.addEventListener('pointerdown', (e) => {
+        if (lid !== null || state !== 'play') return;
+        lid = e.pointerId; lx = sx = e.clientX; ly = sy = e.clientY; st = performance.now(); moved = 0;
+        try { look.setPointerCapture(e.pointerId); } catch (err) { /* sin captura */ }
+    });
+    look.addEventListener('pointermove', (e) => {
+        if (e.pointerId !== lid) return;
+        const dx = e.clientX - lx, dy = e.clientY - ly; lx = e.clientX; ly = e.clientY; moved += Math.abs(dx) + Math.abs(dy);
+        lookEuler.setFromQuaternion(camera.quaternion);
+        lookEuler.y -= dx * 0.005;
+        lookEuler.x = Math.max(-1.5, Math.min(1.5, lookEuler.x - dy * 0.005));
+        lookEuler.z = 0;
+        camera.quaternion.setFromEuler(lookEuler);
+    });
+    const endLook = (e, cancelled) => {
+        if (e.pointerId !== lid) return;
+        lid = null;
+        if (!cancelled && moved < 10 && performance.now() - st < 350 && state === 'play') {
+            const root = pickEntityAt(new THREE.Vector2((e.clientX / window.innerWidth) * 2 - 1, -(e.clientY / window.innerHeight) * 2 + 1));
+            if (root) onAvatarClick(root);
+        }
+    };
+    look.addEventListener('pointerup', (e) => endLook(e, false));
+    look.addEventListener('pointercancel', (e) => endLook(e, true));
+
+    $('tb-jump').addEventListener('pointerdown', (e) => {
+        e.preventDefault();
+        if (state === 'play' && isGrounded && playerConfig.jumpEnabled) { verticalVelocity = playerConfig.jumpForce; isGrounded = false; }
+    });
+    $('tb-view').addEventListener('pointerdown', (e) => {
+        e.preventDefault();
+        if (state !== 'play') return;
+        setPerspective(viewPerspective === 'fps' ? 'avatar' : 'fps');
+        showToast(viewPerspective === 'fps' ? 'Vista: 1ª Persona' : 'Vista: 3ª Persona (Avatar)');
+    });
+    // Al salir de pantalla completa se libera la orientación (vuelve a poder girarse a vertical)
+    const onFs = () => { if (!(document.fullscreenElement || document.webkitFullscreenElement)) { try { screen.orientation && screen.orientation.unlock && screen.orientation.unlock(); } catch (e) { /* sin bloqueo */ } } };
+    document.addEventListener('fullscreenchange', onFs);
+    document.addEventListener('webkitfullscreenchange', onFs);
+})();
 
 /* ============ PANTALLA COMPLETA ============ */
 function toggleFullscreen() {
@@ -1595,6 +1689,7 @@ function startExperience() {
     let nick = ($('w-nick').value || '').trim().slice(0, 20) || defaultNick;
     try { localStorage.setItem('metaverso_visor_nick', nick); localStorage.setItem('metaverso_visor_hair', $('w-hair').value); } catch (err) { /* sin almacenamiento */ }
     setNickname(nick);
+    touchEnter();
     mpEnter(nick);
     $('welcome').style.display = 'none';
     state = 'play';
